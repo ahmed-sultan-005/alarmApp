@@ -1,3 +1,4 @@
+
 export function showSpinner() {
     return {
         type: 'SHOW-SPINNER',
@@ -9,5 +10,14 @@ export function hideSpinner() {
     return {
         type: 'HIDE-SPINNER',
         visible: false,
+    };
+}
+
+export function inc(value, date, todayAlert) {
+  return {
+        type: 'INC',
+        inc: value,
+        date,
+        todayAlert,
     };
 }
