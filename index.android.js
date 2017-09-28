@@ -27,7 +27,9 @@ export default class TestProject extends Component {
         visible: false,
         inc: 0,
         date: moment().format('MMM DD'),
-        todayAlert: `You are Beautyful${moment().format('MMM DD').substring(3)}`
+        todayAlert: `You are Beautyful${moment().format('MMM DD').substring(3)}`,
+        switch: false,
+        timePicker: false,
       }
     };
 

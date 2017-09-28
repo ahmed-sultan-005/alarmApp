@@ -13,11 +13,39 @@ export function hideSpinner() {
     };
 }
 
-export function inc(value, date, todayAlert) {
+export function inc(value, date) {
   return {
         type: 'INC',
         inc: value,
         date,
+    };
+}
+
+export function saveAlert(todayAlert) {
+    return {
+        type: 'ALERT_STR',
         todayAlert,
     };
 }
+
+export function setSwitchState(value) {
+    return {
+        type: 'Switch',
+        switch: value,
+    };
+}
+
+export function showTimePicker(val) {
+    return {
+        type: 'SHOW-TIME-PICKER',
+        timePicker: val,
+    }
+}
+
+export function setTime(time) {
+    return {
+        type: 'SET-TIME',
+        time,
+    }
+}
+

@@ -25,14 +25,13 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.dispatch(actions.showSpinner());
-    // this.props.dispatch(actions.inc(0, moment().add(0, 'd'), ''));
     this.stopSpinner();
   }
 
   stopSpinner() {
     setTimeout(() => {
       this.props.dispatch(actions.hideSpinner());
-    }, 5000)
+    }, 300)
   }
 
   setDate(pattern) {
@@ -57,14 +56,14 @@ class Home extends Component {
 
     todayAlert = alerts[parseInt(day)];
 
-    dispatch(actions.inc(value, toMonthDay, todayAlert))
+    dispatch(actions.inc(value, toMonthDay));
+    dispatch(actions.saveAlert(todayAlert));
 
   }
 
 
   render() {
     const {visible, todayAlert, date} = this.props;
-    console.log(date)
 
     return (
       <View style={styles.container}>
@@ -110,8 +109,6 @@ class Home extends Component {
 
 }
  function select(state) {
-    console.log('ssss',state.spinnerHandler)
-
      return {
         visible: state.spinnerHandler.visible,
         inc: state.spinnerHandler.inc,

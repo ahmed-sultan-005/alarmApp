@@ -48,5 +48,40 @@ export default StyleSheet.create({
     marginTop: 10,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  //  Setting page
+
+  settingBodyContainer: {
+    width: '100%',
+    height: '60%',
+  },
+  switchContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    height: '10%',
+    padding: 10,
+  },
+  switchText: {
+    color: '#fff',
+    fontSize: 14,
+    width: '50%',
+    height: '100%'
+  },
+  timepicker: {
+    width: '100%',
+    height: '30%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  time: {
+    fontSize: 35,
+    color: '#fff',
+  },
+  timeText: {
+    fontSize: 20,
+    color: '#fff',
+    marginBottom: 10,
   }
 });
