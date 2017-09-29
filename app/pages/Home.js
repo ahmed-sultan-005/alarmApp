@@ -3,8 +3,10 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import moment from 'moment';
+import PushNotification from 'react-native-push-notification';
 
 import * as actions from '../action/actions.js';
+import {startNotifications, stopNotification}from '../utils/actions.js';
 
 import styles from '../../assets/styles/home.js';
 
@@ -12,9 +14,8 @@ import {
   View,
   Text,
   TouchableOpacity,
+  AsyncStorage,
 } from 'react-native';
-
-
 
 class Home extends Component {
   constructor(props) {
@@ -26,6 +27,14 @@ class Home extends Component {
   componentDidMount() {
     this.props.dispatch(actions.showSpinner());
     this.stopSpinner();
+    AsyncStorage.getItem('showAlert')
+    .then((res) => {
+      if (JSON.parse(res)) {
+        startNotifications();
+      } else {
+        stopNotification();
+      }
+    })
   }
 
   stopSpinner() {
@@ -42,7 +51,7 @@ class Home extends Component {
     let value = inc || 0;
 
     for(let i = 0; i <= 355; i++) {
-     alerts.push(`You are beautyful${i}`);
+     alerts.push(`You are beautyful ${i}`);
     }
 
     if (pattern === 'inc') {

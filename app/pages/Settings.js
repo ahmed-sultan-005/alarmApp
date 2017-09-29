@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import * as actions from '../action/actions.js';
+import {startNotifications, stopNotification}from '../utils/actions.js';
+
 import styles from '../../assets/styles/home.js';
 
 import {
@@ -40,6 +42,13 @@ class Settings extends Component {
     AsyncStorage.setItem('showAlert', JSON.stringify(val), () => {
       this.props.dispatch(actions.setSwitchState(val));
     });
+
+    if (val) {
+      startNotifications();
+    } else {
+      stopNotification();
+    }
+
   }
 
   openTimePIcker() {
