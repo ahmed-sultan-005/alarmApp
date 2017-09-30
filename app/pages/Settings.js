@@ -55,19 +55,26 @@ class Settings extends Component {
     this.props.dispatch(actions.showTimePicker(true));
   }
 
-  handleTimePicked(data) {
-    if (data) {
-      let time = moment(data).format('h:mm:a');
-      AsyncStorage.setItem('AlertTime', JSON.stringify(time), () => {
-        this.props.dispatch(actions.setTime(time));
+  handleTimePicked(date) {
+    if (date) {
+      AsyncStorage.setItem('AlertTime', date, () => {
+        this.props.dispatch(actions.setTime(date));
       });
     }
     this.props.dispatch(actions.showTimePicker(false));
+
+    AsyncStorage.getItem('showAlert')
+    .then((res)=> {
+      if (JSON.parse(res)) {
+        startNotifications();
+      } else {
+        stopNotification();
+      }
+    })
   }
 
   render() {
     const {timePicker, time} = this.props;
-
     return (
       <View style={styles.container}>
         <TouchableOpacity
@@ -90,7 +97,7 @@ class Settings extends Component {
           </View>
           <TouchableOpacity onPress={() => this.openTimePIcker()} style={styles.timepicker}>
             <Text style={styles.timeText}>Set time for Notifications</Text>
-            <Text style={styles.time}>{time}</Text>
+            <Text style={styles.time}>{moment(time).format('h:mm:a')}</Text>
           </TouchableOpacity>
         </View>
         <DateTimePicker

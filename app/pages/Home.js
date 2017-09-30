@@ -50,7 +50,7 @@ class Home extends Component {
     let alerts = [], todayStr = '';
     let value = inc || 0;
 
-    for(let i = 0; i <= 355; i++) {
+    for(let i = 0; i <= 364; i++) {
      alerts.push(`You are beautyful ${i}`);
     }
 
